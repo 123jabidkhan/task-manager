@@ -1,0 +1,41 @@
+<div class="main-container">
+    
+        <mat-card style=" margin-top: 10px;;background-color: rgba(229, 229, 236, 0.863)">
+            <div class="row">
+            <div class="col-lg-3">
+                <mat-list role="list">
+                    <mat-list-item  *ngFor='let menuItem of masterMenuItems' onclick="return false" role="listitem" 
+                    (click)='menuItemClick(menuItem)'>
+                        <a>{{menuItem.displayName}}</a>
+                    </mat-list-item>
+                    
+                </mat-list>
+            </div>
+            <div class="col-lg-9">
+
+                <ul class="nav nav-tabs" role="tablist">
+                    <li  class="nav-item " style="display: flex;flex-direction: row; background-color: rgba(102, 100, 247, 0.829);margin-left: 5px;" *ngFor='let tab of tabs'>
+                      <span> <a  class="nav-link text-light" data-toggle="tab"
+                        (click)='activeItem = tab.itemName' >{{tab.displayName}}</a></span>
+                        <span matTooltip="Remove {{tab.displayName}}" style="background-color: rgb(175, 174, 245);">
+                            <a><mat-icon (click)='onCloseClick(tab)' style="font-size: 20px;color: rgb(248, 79, 192);margin-top: 10px;">close</mat-icon></a>
+                        </span>
+           
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane fade show" role="tabpanel" *ngFor='let tab of tabs' [id]="tab.itemName"
+                    [ngClass]="{'active':activeItem==tab.itemName}" >
+                <ng-template appComponentLoader></ng-template>
+                </div>
+                </div>
+
+
+            </div>
+
+    </div>
+
+        </mat-card>
+
+</div>

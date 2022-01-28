@@ -1,0 +1,12 @@
+form input{
+    font-size: 18px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    height: 45px;
+    
+}
+form input:focus{
+    box-shadow: none;
+    border: 2px solid pink;
+    
+}

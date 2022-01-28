@@ -1,0 +1,190 @@
+<div class="main-container" style="height: 100%;">
+    <div class="container-fluid">
+
+
+        
+        <!-- <div class="row">
+            <div class="col-lg-10 offset-1" style="margin-top: 50px;">
+                <button mat-raised-button color='primary' data-bs-toggle='modal' data-bs-target='#createProject'>Create Project</button>
+
+                <mat-card style="background-color:rgba(234, 228, 250, 0.863) ;">
+                   <div class="project-header" style="display: flex;justify-content: space-between;">
+                       <div>
+                            <h2 style="color: rgba(128, 128, 240, 0.76);font-size: 26px;font-weight: 500;">List Of Projects</h2>
+                       </div>
+                       <div>
+                           <button mat-raised-button color='primary' data-bs-toggle='modal' data-bs-target='#createProject'>Create Project</button>
+                       </div>
+                    
+                </div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr style="color: black;font-weight: 500;font-size: 16px;background-color: rgba(128, 128, 240, 0.616);">
+                                <th>Project Id</th>
+                                <th>Project Name</th>
+                                <th>Project Start Date</th>
+                                <th>Team Size</th>
+                                <th>Status</th>
+                                <th>Client Location</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+            
+                        <tbody>
+                            <tr style="color: rgb(42, 42, 240);" *ngFor='let project of projects;let i=index' [ngClass]='{"text-muted":!project.active}'>
+                                <td style="padding: 15px;">{{i+1}}</td>
+                                <td>{{project.projectName}}</td>
+                                <td>{{project.dateOfStart}}</td>
+                                <td>{{project.teamSize}}</td>
+                                <td>{{project.status}}</td>
+                                <td>{{project.clientLocationName}}</td>
+                                <td>                                   
+                                    <button style="position: relative;top: 10px;" mat-icon-button color='primary'  > <a href="/update/{{project.id}}"><mat-icon>edit</mat-icon> </a> </button>
+                                    <button mat-icon-button color='warn' (click)='dellProject(project.id)'> <mat-icon>delete</mat-icon> </button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table> 
+                </mat-card>
+
+
+ -->
+ <div style="display: flex; margin-top: 10px; ;flex-direction: row;justify-content: space-between;" class="projects-header">
+    <div>
+        <h2 style="color: rgba(128, 128, 240, 0.76);font-size: 26px;font-weight: 500;margin-top: 5px;">Total Projects <span class="text-success">({{totalProjects}})</span></h2>
+    </div>
+    
+    <div class="createTaskB mb-2">
+        <button mat-raised-button data-bs-toggle='modal' data-bs-target='#createProject'  style="width: 300px;height: 50px;font-size: 22px;background-color: #300ec7f8;color: white;margin-right: 10px;"> <mat-icon id="createTaskIcon" style="font-size: 40px;margin-right: 25px;margin-bottom: 15px;">keyboard_double_arrow_right</mat-icon>Create New Project</button>
+    </div>
+ </div>
+ 
+
+
+
+
+
+
+ <div class="row">
+   
+     <div class="col-lg-4  project_box" *ngFor='let project of projects;let i=index'>
+   
+            <app-project [currentProject]='project' [currentProjectIndex]='i' > </app-project>
+
+     </div>
+ </div>
+
+    </div>
+</div>
+
+
+<!-- create project -->
+<div class="modal" id='createProject'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h2>Add New Project</h2>
+                <button type="button" class="btn-close" data-bs-dismiss='modal'></button>
+            </div>
+            <div class="modal-body" style="padding: 20px;margin-top: 20px;">
+               <div class="row">
+                   <form #projectDetails='ngForm' (ngSubmit)='onSubmitData(projectDetails)'>
+                   <div class="col-lg-12">
+                       <div class="form-group">
+                           <input type="text" placeholder="Project Id" class="form-control" name='projectID' required='required' ngModel #projectID='ngModel' pattern='^[0-9]*$'
+                           [ngClass]="{'is-invalid':projectID.invalid && (projectID.dirty || projectID.touched || projectDetails.submitted), 'is-valid':projectID.valid && (projectID.dirty || projectID.touched || projectDetails.submitted)}">
+                     
+                           <span class="text-danger" *ngIf='projectID.invalid && (projectID.touched || projectID.dirty || projectDetails.submitted) && projectID.errors?.required'>* Project Id cant be blank</span>
+                           <span class="text-danger" *ngIf='projectID.invalid && (projectID.touched || projectID.dirty || projectDetails.submitted) && projectID.errors?.pattern'>* Project Id should contains numbers only</span>
+
+                        </div>
+
+
+
+                    <div class="form-group">
+                        <input type="text" placeholder="Project Name" class="form-control" name='projectName' ngModel required='requored' #projectName='ngModel' minlength='5' maxlength='30'
+                        pattern='^[A-Za-z0-9 /-]*$'   [ngClass]="{'is-invalid':projectName.invalid && (projectName.dirty || projectName.touched || 
+                        projectDetails.submitted), 'is-valid':projectName.valid && (projectName.dirty || projectName.touched || projectDetails.submitted)}">
+                   
+
+                        <span class="text-danger" *ngIf='projectName.invalid && (projectName.touched || projectName.dirty || projectDetails.submitted) && projectName.errors?.required'>* Project Name cant be blank</span>
+                        <span class="text-danger" *ngIf='projectName.invalid && (projectName.touched || projectName.dirty || projectDetails.submitted) && projectName.errors?.pattern'>* Project Should  contains alphabets only</span>
+                        <span class="text-danger" *ngIf='projectName.invalid && (projectName.touched || projectName.dirty || projectDetails.submitted) && projectName.errors?.minlength'>* Project Name should have atlest 5 charachters</span>
+                   
+                   
+                    </div>
+
+
+                    <div class="form-group">
+                        <input type="date" placeholder="Start Date" class="form-control" name='dateOfStart' #dateOfStart ='ngModel' required='required' ngModel
+                        [ngClass]="{'is-invalid':dateOfStart.invalid && (dateOfStart.dirty || dateOfStart.touched || projectDetails.submitted), 'is-valid':dateOfStart.valid && (dateOfStart.dirty || dateOfStart.touched || projectDetails.submitted)}"  >
+                        <span class="text-danger" *ngIf='dateOfStart.invalid && (dateOfStart.touched || dateOfStart.dirty || projectDetails.submitted) && dateOfStart.errors?.required'>* Project Start Date  cant be blank</span>                    
+                    </div>
+
+                    
+                    <div class="form-group">
+                        <input type="text" placeholder="Team Size" class="form-control" name='teamSize' ngModel #teamSize='ngModel' maxlength='5' required='required'
+                        pattern='^[0-9]*$' [ngClass]="{'is-invalid':teamSize.invalid && (teamSize.dirty || teamSize.touched || 
+                        projectDetails.submitted), 'is-valid':teamSize.valid && (teamSize.dirty || teamSize.touched || projectDetails.submitted)}" >
+                   
+                        <span class="text-danger" *ngIf='teamSize.invalid && (teamSize.touched || teamSize.dirty || projectDetails.submitted) && teamSize.errors?.required'>* Team Size Should be a number</span>
+                   
+                    </div>
+
+                    
+                    <div class="form-group">
+                        <select id="drpNewClientLocation" class="form-control form-select" name='clientLocationName' ngModel required='required' #clientLocationName='ngModel'
+                        [ngClass]="{'is-invalid':clientLocationName.invalid && (clientLocationName.dirty || clientLocationName.touched || projectDetails.submitted), 'is-valid':clientLocationName.valid && (clientLocationName.dirty || clientLocationName.touched || projectDetails.submitted)}"   >
+                            <option>Select Location</option>
+                            <option *ngFor='let client of clientLocations' [value]="client.clientLocationName">{{client.clientLocationName}}</option>
+                        </select>
+                      
+                        <span class="text-danger" *ngIf='clientLocationName.invalid && (clientLocationName.touched || clientLocationName.dirty || projectDetails.submitted) && clientLocationName.errors?.required'>* Please select location</span>
+
+                    </div>
+   
+                 
+
+                    <div class="form-group row">
+                        <div class="form-check">
+                            <div style="display: flex;flex-direction: row; margin-left: -5px;">
+                                <input type="checkbox" id="chkNewActive" value="true" name='active' ngModel>&nbsp;&nbsp;
+                                <label style="margin-top: 12px;font-size: 16px;" for="chkNewActive" class="form-check-label">Active</label>
+                            </div>                         
+                        </div>            
+                   </div>
+
+                   <div class="form-group row">
+                       <div class="col-lg-6">
+                           <label for="rbNewStatusInForce">Status :</label>
+                           <div class="form-check" >
+                               <input type="radio" id="rbNewStatusInForce" value="In Force" name="status" ngModel #rbNewStatusInForce='ngModel' required='required'>
+                               <label style="margin-left: -30px;" for="rbNewStatusInForce">In Force</label>
+
+                               <input style="margin-left: 30px;" type="radio" id="rbNewStatusSupport" value="Support" name="status" ngModel #rbNewStatusSupport='ngModel' required='required'>
+                               <label style="margin-left: -20px;"  for="rbNewStatusSupport">Support</label>
+                           </div>
+                           <span class="text-danger" *ngIf='rbNewStatusInForce.invalid && (rbNewStatusInForce.touched || rbNewStatusInForce.dirty || projectDetails.submitted) && rbNewStatusInForce.errors?.required'>* Please select status</span>
+
+                       </div>
+                   </div><br>
+
+                    <div class="form-group">
+                        <button [disabled]='projectDetails.invalid' type='submit'    style="color:black;height: 50px;border-radius: 10px;font-size: 18px;"   class="form-control" >Save</button>
+                    </div>
+
+                   </div>
+                </form>
+               </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- .. -->

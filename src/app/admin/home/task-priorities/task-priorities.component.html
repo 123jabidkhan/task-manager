@@ -1,0 +1,93 @@
+<h1 class="text-success" style="background-color:rgb(201, 201, 247);padding: 10px;">Task Prioritys</h1>
+<mat-card style="margin-top: -15px;;background-color: rgba(221, 221, 243, 0.959);">
+
+ <div class="row newCountryForm" class="newCountryForm" *ngIf='isCreateFormVisible'>
+        <div class="col-lg-12">
+            <form [formGroup]='taskPriorityForm' (ngSubmit)='onSaveClick()'>
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="form-group mb-2">
+                            <input style="background-color:rgba(235, 235, 252, 0.959); ;" type="text" placeholder="TaskPriority Name" name="taskPriorityName" formControlName='taskPriorityName' class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <button type="submit" mat-stroked-button style="width: 100px;margin-left: 80px;" class="bg-success text-white">Save</button>
+                    </div>
+
+                </div>
+                
+            </form>
+        </div>
+    </div> 
+
+   <div class="row editCountryForm" class="editCountryForm" *ngIf='isUpdateFormVisible'>
+        <div class="col-lg-12">
+            <form #updateTaskPriorityForm='ngForm' (ngSubmit)='updateFormSubmitted(updateTaskPriorityForm)'>
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="form-group mb-2">
+                            <input style="background-color:rgba(235, 235, 252, 0.959); ;" type="text" placeholder="Task Priority Name" name="taskPriorityName" 
+                         [ngModel]='currentTaskPriority.taskPriorityName'  class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <button mat-stroked-button style="width: 100px;margin-left: 80px;" class="bg-success text-white">Update</button>
+                    </div>
+
+                </div>
+                
+            </form>
+        </div>
+    </div> 
+  
+
+
+<table class="table table-hover">
+        <thead>
+            <tr style="background-color: rgba(206, 206, 245, 0.959);">
+                <th>Task Priority Id</th>
+                <th>Task Priority Name</th>
+                    <th>
+                    <button matTooltip="Edit" mat-icon-button style="background-color: #4876f3;width: 100px;border-radius: 5px;height: 35px;margin-top: 2px;" (click)='taskPriorityFormShow()' > <mat-icon style="position: relative;top: -5px;">add</mat-icon> </button>&nbsp;
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let task of taskPriorities;let i=index' style="color: black;">
+                <td>{{i+1}}</td>
+                <td>{{task.taskPriorityName | uppercase}}</td>
+                <td>
+                    <button (click)='getTask(task.id)' matTooltip="Edit"  mat-icon-button style="background-color: #a3b8f1;width: 40px;border-radius: 5px;height: 35px;margin-top: 2px;"> <mat-icon style="margin-bottom: 7px;">edit_note</mat-icon> </button>&nbsp;
+                    <span (click)='deleteTaskP(task.id)' >
+                    <button matTooltip="Delete"  mat-icon-button  style="background-color: rgb(243, 113, 185);width: 40px;border-radius: 5px;height: 35px;margin-top: 2px;"> <mat-icon style="margin-bottom: 7px;background-color: rgb(241, 163, 206);color: white;">backspace</mat-icon> </button>
+                    </span>
+                    
+                </td> 
+            </tr>
+        </tbody>
+    </table> 
+
+    <!-- <form novalidate='novalidate' [formGroup]='newForm'>
+        <div class="modal fade" role='dialog' id='newCountryModal'>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <div class="modal-title">New Country :</div>
+                        <button type="button" class="close" data-dismiss="='modal"><span>&times;</span></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="form-group-row">
+                            <label for="txtNewCountryName" class="col-sm-4 col-form-label">Country Name *</label>
+                            <div class="col-sm-8">
+                                <input type="text" id="txtNewCountryName" class="form-control" placeholder="Country Name"
+                                name="countryName" formControlName='countryName' maxlength="30" #defaultTextBox_New>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form> -->
+</mat-card>

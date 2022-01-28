@@ -1,0 +1,16 @@
+mat-list-item{
+    background-color: rgba(159, 159, 247, 0.76);
+    margin: 1px;
+    border-radius: 2px;
+    border: 1px solid rgb(7, 3, 240);
+}
+mat-list-item a{
+    text-decoration:none;
+    color:white;
+    font-size: 18px;
+}
+mat-list-item:hover{
+   color: rgb(24, 21, 204);
+   background-color: rgba(102, 100, 247, 0.829);
+   transition: ease-in-out .3s;
+}

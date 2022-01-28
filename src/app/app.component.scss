@@ -1,0 +1,46 @@
+mat-drawer-container{
+    width: 100%;
+}
+mat-drawer{
+    width: 70px;
+    background-color: rgba(128, 128, 240, 0.76);background-image:
+    linear-gradient(135deg, rgba(195, 196, 250, 0.692), rgba(6, 41, 240, 0.822)),
+    url('/assets/images/bg5.jpeg');
+    
+    color: #f79f9f;
+
+}
+mat-drawer div{
+    // margin-top: 200px;
+    
+}
+mat-drawer div button{
+    margin-top: 20px;
+    margin-left: 10px;
+    transition: transform 0.5s;
+}
+mat-drawer div button mat-icon:hover{
+    color: white;
+
+}
+mat-drawer div button:hover{
+    background-color: rgba(6, 41, 240, 0.822);
+    scale: 2;
+    transform: scale(1.5);
+    transition: ease-in-out .5s;
+}
+.sidenav-btn{
+    background-color: white;
+}   
+.sidenav-btn mat-icon{
+    color: blue;
+    margin-top: 7px;
+} 
+.menuBtn{
+    transition: transform .5s ;
+}
+button:hover{
+transform: scale(1.5);
+}
+
+

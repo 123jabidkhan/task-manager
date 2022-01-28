@@ -1,0 +1,183 @@
+{
+  "projects": [
+    {
+      "projectID": "1",
+      "projectName": "JIO-Dashboard",
+      "dateOfStart": "2021-11-19",
+      "teamSize": "10",
+      "clientLocationName": "INDIA",
+      "active": false,
+      "status": "Support",
+      "id": 1
+    },
+    {
+      "projectID": "2",
+      "projectName": "Covid2021",
+      "dateOfStart": "2021-11-05",
+      "teamSize": "3",
+      "clientLocationName": "USA",
+      "active": true,
+      "status": "In Force",
+      "id": 2
+    },
+    {
+      "projectID": "5",
+      "projectName": "JIO-Dashboard",
+      "dateOfStart": "2021-11-19",
+      "teamSize": "4",
+      "clientLocationName": "USA",
+      "active": true,
+      "status": "Support",
+      "id": 5
+    },
+    {
+      "projectID": "6",
+      "projectName": "bbbbbbb",
+      "dateOfStart": "2021-11-24",
+      "teamSize": "10",
+      "clientLocationName": "DELHI",
+      "active": true,
+      "status": "In Force",
+      "id": 6
+    },
+    {
+      "projectID": "7",
+      "projectName": "cccccccc",
+      "dateOfStart": "2021-11-24",
+      "teamSize": "10",
+      "clientLocationName": "DELHI",
+      "active": false,
+      "status": "In Force",
+      "id": 7
+    },
+    {
+      "projectID": "8",
+      "projectName": "ddddddd",
+      "dateOfStart": "2021-11-24",
+      "teamSize": "10",
+      "clientLocationName": "DELHI",
+      "active": false,
+      "status": "In Force",
+      "id": 8
+    },
+    {
+      "projectID": "10",
+      "projectName": "fffffff",
+      "dateOfStart": "2021-11-24",
+      "teamSize": "10",
+      "clientLocationName": "DELHI",
+      "active": false,
+      "status": "In Force",
+      "id": 10
+    }
+  ],
+  "clientLocations": [
+    {
+      "clientLocationID": 1,
+      "clientLocationName": "new Delhi",
+      "id": 1
+    },
+    {
+      "clientLocationID": 2,
+      "clientLocationName": "bangalore",
+      "id": 2
+    },
+    {
+      "clientLocationID": null,
+      "clientLocationName": "Bihar",
+      "id": 4
+    },
+    {
+      "clientLocationID": null,
+      "clientLocationName": "chennai",
+      "id": 5
+    },
+    {
+      "clientLocationID": 10,
+      "clientLocationName": "new Delhi",
+      "id": 10
+    },
+    {
+      "clientLocationID": 15,
+      "clientLocationName": "new Delhi",
+      "id": 15
+    }
+  ],
+  "countries": [
+    {
+      "countryId": 1,
+      "countryName": "INDIA",
+      "id": 1
+    },
+    {
+      "countryId": 3,
+      "countryName": "USE",
+      "id": 3
+    },
+    {
+      "countryId": 4,
+      "countryName": "BRAZIL",
+      "id": 4
+    },
+    {
+      "countryId": 5,
+      "countryName": "ARAB",
+      "id": 5
+    },
+    {
+      "countryId": null,
+      "countryName": "NEWZLAND",
+      "id": 6
+    },
+    {
+      "countryId": null,
+      "countryName": "akash",
+      "id": 7
+    }
+  ],
+  "taskprioritys": [
+    {
+      "taskPriorityId": 2,
+      "taskPriorityName": "Urgent",
+      "id": 2
+    },
+    {
+      "taskPriorityId": 3,
+      "taskPriorityName": "speed up",
+      "id": 3
+    },
+    {
+      "taskPriorityId": 4,
+      "taskPriorityName": "normal",
+      "id": 4
+    },
+    {
+      "taskPriorityId": 6,
+      "taskPriorityName": "Emergency",
+      "id": 6
+    }
+  ],
+  "taskstatus": [
+    {
+      "taskStatusId": null,
+      "taskStatusName": "finished",
+      "id": 1
+    },
+    {
+      "taskStatusId": 2,
+      "taskStatusName": "pending",
+      "id": 2
+    },
+    {
+      "taskStatusId": null,
+      "taskStatusName": "working on",
+      "id": 3
+    },
+    {
+      "taskStatusId": null,
+      "taskStatusName": "not finished",
+      "id": 4
+    }
+  ],
+  "tasks": []
+}

@@ -1,0 +1,31 @@
+
+.main-container .main-card{
+    height: 100%;
+    // background-color: rgba(231, 234, 247, 0.877);
+}
+.user-details ul{
+    background-color:rgb(227, 227, 248);
+    border-left: green 3px solid;
+    padding: 5PX;
+}
+.user-details ul li{
+    list-style: none; 
+    padding: 5px;
+    border-bottom: green .5px solid;
+}
+
+table tr td,th{
+    font-size: 18px;
+}
+mat-accordion mat-expansion-panel mat-expansion-panel-header {
+    margin-bottom: 5px;
+    background-color: rgb(226, 226, 247) ;
+}
+mat-accordion mat-expansion-panel mat-expansion-panel-header:hover{
+    margin-bottom: 5px;
+    background-color: rgb(209, 209, 245) ;
+    transition: .2s ease-in-out;
+    border-bottom: 3px solid rgba(0, 128, 0, 0.849);
+    color: green;
+    
+}

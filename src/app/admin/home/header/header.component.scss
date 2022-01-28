@@ -1,0 +1,21 @@
+p #brand{
+    font-size:25px;
+    margin-right: 10px;
+    margin-left: 30px;
+    font-weight: 700;
+    font-family:'Courier New', Courier, monospace ;
+    font-size: 32px;
+}
+p span a{
+    color: white;
+    text-decoration: none;
+    color:white;
+    margin-right: 10px;
+}
+p span a:hover{
+    color: rgb(220, 217, 223);
+    
+}
+spaninput:focus{
+    box-shadow: none;
+}

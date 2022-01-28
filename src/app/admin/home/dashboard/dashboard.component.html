@@ -1,0 +1,158 @@
+<div class="main-container" >
+    <div class="row">
+        <div class="col-lg-3" >
+            <mat-card class="main-card">
+                <h2 style="background-color: rgb(227, 227, 248);text-align: center;padding: 5px;border-radius: 10px;">{{designation}}</h2>
+                <div class="user_logo" class='text-center'>
+                    <img style="height: 75px;height:75px;border-radius: 50%;" src="assets/images/user.jpeg" alt="">
+                    <p style="font-size:18px;margin-top:10px;font-weight: 500; ">{{username}}</p>
+                </div>
+                
+                <div class="user-details">
+                    <h2 class="text-center">TEAM SUMMARY</h2>
+                    <ul>
+                       <li><H3>TOTAL TEAM MEMBERS &nbsp;<span style="width: 50px;border-radius: 10px;" class="badge bg-success">{{noOfTeamMembers}}</span></H3></li> 
+                       <li><H3>TOTAL COST OF PROJECTS &nbsp;<span style="width: 50px;border-radius: 10px;" class="badge bg-success">{{totalCostOfAllProjects}}</span></H3></li> 
+                       <li><H3>PENDING TASKS &nbsp;<span style="width: 50px;border-radius: 10px;" class="badge bg-success">{{pendingTasks}}</span></H3></li> 
+                       <li><H3>UPCOMING PROJECTS &nbsp;<span style="width: 50px;border-radius: 10px;" class="badge bg-success">{{upComingProjects}}</span></H3></li>    
+                    </ul>
+                </div>
+
+                <div class="user-details">
+                    <h2 class="text-center">CLIENTS</h2>
+                    <ul>
+                        <li style="border-bottom: 1px solid green;text-align: center;" *ngFor='let client of clients'><H3>{{client}}&nbsp;</H3></li> 
+                    </ul>
+                </div>
+            </mat-card>
+        </div>
+
+        <div class="col-lg-6">
+            <mat-card>
+
+                <div class='menu-buttons' style="display: flex;justify-content: space-between;background-color: rgba(234, 238, 250, 0.733);padding: 10px;">
+                <div>
+                    <button style="background-color: rgba(250, 250, 252, 0.938);" mat-raised-button [matMenuTriggerFor]="projectMenu" type="button" id="dropdownMenuButton1" >
+                      Select Project <mat-icon>keyboard_arrow_down</mat-icon>
+                    </button>&nbsp;
+                    <span style="color:cadetblue;font-size: 18px;">{{projectName}}</span>
+                    <mat-menu #projectMenu="matMenu">
+                      <button mat-menu-item *ngFor='let project of projects'><a onClick='return false' 
+                            (click)='onChangeProject($event)'
+                             style="text-decoration: none;color: cadetblue;" href="#">{{project}}</a></button>
+                      </mat-menu>
+                  </div>
+
+                  <div>
+                    <button style="background-color: rgba(250, 250, 252, 0.938);" mat-raised-button [matMenuTriggerFor]="yeartMenu" type="button" id="dropdownMenuButton1" >
+                      Select Year <mat-icon>keyboard_arrow_down</mat-icon>
+                    </button>
+                    <mat-menu #yeartMenu="matMenu">
+                        <button mat-menu-item *ngFor='let year of years'><a style="text-decoration: none;color: cadetblue;" href="#">{{year}}</a></button>
+                      </mat-menu>
+                  </div>
+                </div>
+
+                <mat-card>
+                <div class="breif-project">
+                    <h2 style="background-color: rgb(209, 209, 245) ;padding:5px;text-align: center;">PROJECT BRIEFING</h2>
+                    <div class="row">
+                        <div class="col-lg-12">
+                           <table class="table table-hover">
+                            <tbody>
+                               <tr>
+                                   <td>Project Cost</td>
+                                   <td>{{projectCost | currency : 'INR'}} </td>
+                               </tr>
+                               <tr>
+                                <td>Project Expanditure</td>
+                                <td> {{currentExpanditure | currency:'INR'}}</td>
+                            </tr>
+                            <tr>
+                                <td>Available Funds</td>
+                                <td>{{availableFunds | currency:'INR'}}</td>
+                            </tr>
+                            </tbody>
+                           </table>
+                        </div>
+                    </div>
+                </div>
+            </mat-card><br>
+
+                <mat-card>
+                <div class="breif-project">
+                    <h2 style="background-color: rgb(209, 209, 245) ;padding:5px;text-align: center;">TEAM MEMBERS SUMMARY</h2>
+                    <div class="row">
+                        <div class="col-lg-12">
+                           <table class="table table-hover">
+                            <thead>
+                               <tr>
+                                   <th>Id</th>
+                                   <th>Region</th>
+                                   <th>Team Members Count</th>
+                                   <th>Unavilable Members</th>
+                               </tr>
+                            </thead>
+                            <tbody>
+                               <tr *ngFor='let team of teamMembersSummary;let i=index'>
+                                   <td>{{i+1}}</td> 
+                                   <td>{{team.region}}</td>
+                                   <td>{{team.count}}</td>
+                                   <td>{{team.unAvailable}}</td>
+                               </tr>
+                            </tbody>
+                           </table>
+                        </div>
+                    </div>
+                </div>
+        <h4 class="text-success">Current Date :{{date | date:'short'}}</h4>
+        <div></div>
+            </mat-card><br>
+
+
+            </mat-card>
+        </div>
+
+        <div class="col-lg-3">
+            <mat-card>
+                <h2 style="background-color: rgba(234, 238, 250, 0.733);padding:5px;text-align: center;">TEAM MEMBERS</h2>
+                <mat-accordion MatTooltip='Selects Region' *ngFor='let team of teamMembers;let i=index'>
+                    <mat-expansion-panel [expanded]='(i === 0)?true:false'>
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          {{team.region}}
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                   
+  
+                      <div class="expansion-body" >
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                              <tbody>
+                                <tr *ngFor='let team of team.members;let i=index'>
+                                    <td>{{team.id}}</td>
+                                    <td [ngStyle]="{'color':(team.status) === 'Available'?'green':'red'}">{{team.name}}</td>
+                                    <td>{{team.status}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                      </div>
+                     
+                    </mat-expansion-panel>
+                </mat-accordion>
+
+               
+
+                   
+
+                 
+            </mat-card>
+        </div>
+    </div>
+</div>

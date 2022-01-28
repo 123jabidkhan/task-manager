@@ -1,0 +1,37 @@
+<div class="main-screen" style="margin-top: -12px;">
+    <div class="container">
+    <div class="row">
+    
+        <div  class="col-lg-4 offset-4 text-white login" style="height: 450px;padding: 30px;margin-top: 12%;border-radius: 15px;   background: rgb(12, 6, 133);
+         background: linear-gradient(160deg, rgba(4, 10, 87, 0.185) 0%, rgba(126, 118, 243, 0.486)100%);background-image:
+        linear-gradient(135deg, rgba(130, 170, 240, 0.534), rgba(15, 47, 228, 0.89)),
+        url('/assets/images/bg5.jpeg'); ">
+            <form  style="margin-top: 20px;" >
+                <h2 style="font-size: 30px; color: #b0ccf7;"><span style="color:rgba(128, 128, 240, 0.76);
+                    ">|</span> Login</h2>
+                    <div  appAlert [error]='loginError' *ngIf='loginError'></div>
+                
+                <div class="form-group">
+                    <label for="username" style="color: #b0ccf7;font-size: 16px;margin-bottom: 5px;">Username</label> 
+                    <input style="height: 50px;box-shadow: none;border-left: 5px solid red;" type="text" class="form-control"  name="UserName" [(ngModel)]='loginViewModel.UserName'>
+                </div> <br>
+                <div class="form-group">
+                    <label for="username" style="color: #b0ccf7;font-size: 16px;margin-bottom: 5px;">Password</label>
+                    <input style="height: 50px;box-shadow: none;border-left: 5px solid red;" type="text" class="form-control" type="password"  name="Password" [(ngModel)]='loginViewModel.Password'>
+                </div><br><br>
+                <!-- <span class="text-danger">{{loginError}}</span> -->
+                <div class="form-group mt-2">
+                    <div class="login_button">
+                        <button style="height: 50px;font-size: 22px;color: #b0ccf7;border-radius: 10px;" class="btn  form-control" (click)='onLoginClick($event)'>Login</button>
+                    </div><br>
+                    <div class="register_button" style="display: flex;flex-direction: row-reverse;">
+                        <!-- <a routerLink='/auth/register' style="font-size: 16px;" class="text-primary">Register</a> -->
+                    </div><br>
+                </div>
+            </form>
+            
+        </div>
+        
+    </div>
+    </div>
+

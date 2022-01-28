@@ -1,0 +1,8 @@
+<div class="main-container">
+    <p style="padding: 10px;text-align: center; font-size:22px;background-color: black;color: white;">
+         working on maps</p>
+<!-- .................. -->
+         <agm-map [latitude]="lat" [longitude]="lng" (mapClick)='onMapClick($event)'>
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+          </agm-map>
+</div>

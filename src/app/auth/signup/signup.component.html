@@ -1,0 +1,128 @@
+<div class="main-screen" style="margin-top: -12px;">
+    <div class="container">
+    <div class="row">
+    
+        <div  class="col-lg-6 offset-3 text-white login" style="padding: 30px;margin-top: 5%;border-radius: 15px;   background: rgb(12, 6, 133);
+         background: linear-gradient(160deg, rgba(4, 10, 87, 0.185) 0%, rgba(126, 118, 243, 0.486)100%);background-image:
+        linear-gradient(135deg, rgba(130, 170, 240, 0.534), rgba(15, 47, 228, 0.89)),
+        url('/assets/images/bg5.jpeg'); ">
+            <form [formGroup]='signUpForm' (ngSubmit)='submitSignupForm()' style="margin-top: 20px;" >
+                <h2 style="font-size: 30px; color: #b0ccf7;"><span style="color:rgba(128, 128, 240, 0.76);">|</span> SignUp</h2>
+                
+                <div class="form-group" style="display: flex;">
+                    <input  style="height: 50px;box-shadow: none;" type="text" class="form-control" placeholder="First Name"  formControlName="firstName"
+                  
+                    >&nbsp;
+                    <input   style="height: 50px;box-shadow: none;" type="text" class="form-control" placeholder="Last Name"  formControlName="lastName"  >
+                </div> <br>
+
+                <div class="form-group" style="display: flex;">
+                    <input style="height: 50px;box-shadow: none;" type="text" class="form-control" placeholder="Email"  formControlName="email"  >&nbsp;
+                    <input style="height: 50px;box-shadow: none;" type="text" class="form-control" placeholder="Mobile Number"  formControlName="mobile"  >      
+                </div> <br>
+
+                <div class="form-group" >
+                    <label style="font-weight: 400;font-size: 16px;margin-bottom: 2px;">Date Of Birth :</label>
+
+                    <input style="height: 50px;box-shadow: none;" type="date" class="form-control"   formControlName="dob"  >
+                </div> <br>
+
+                <div class="form-group">
+                    <label style="font-weight: 400;font-size: 16px;margin-bottom: 2px;">Select Country :</label>
+                    
+                    <select style="height: 50px;box-shadow: none;" class="form-control form-select" name="countryID" id="countryID" formControlName='countryID'>
+                        <option value="null">Select Country</option>
+                        <option *ngFor='let country of countries' [value]='country.countryName'>{{country.countryName}}</option>
+                    </select>
+                </div><br>
+
+                <div class="form-group form-row">
+                   
+                    <div class="form-check-label form-check-inline">
+    
+                        <label style="font-weight: 400;font-size: 16px;">Gender :</label>
+                    </div>
+                    <div class="form-check-label form-check-inline">
+    
+                        <input  class="form-check-input" type="radio" formControlName="gender" value="male" id="male">&nbsp;
+                        <label style="font-weight: 400;font-size: 16px;" for="male" class='form-check-label'>Male</label>
+                    </div>
+
+                    <div class="form-check-label form-check-inline">
+                        <input class="form-check-input" type="radio" formControlName="gender" value="female" id="female" >&nbsp;
+                        <label for="female" class='form-check-label'>Female</label>
+                    </div>
+
+                    <div class="form-check-label form-check-inline">
+                        <input class="form-check-input" type="radio" formControlName="gender" value="other" id="other" >&nbsp;
+                        <label for="other" class='form-check-label'>Other</label>
+                    </div>
+                </div><br>
+
+               
+
+                <div class="form-group m-1" style='display:flex;flex-direction:row-reverse '>
+                    <div></div>
+                    <div>
+                    <button  style="height: 45px;margin: 2px;" class="btn btn-success"  mat-button (click)='addNewSkills()'> Add Skill </button>
+                    </div>
+                </div>
+
+                <div formArrayName='skills' *ngFor='let skill of skills.controls;let i=index'>
+                <div id="skills-group" style="display: flex;margin: 5px;" [formGroupName]='i'>
+                  
+                  
+                        <!-- <input type="text" name="skillName" id="skillName" placeholder="Skill Name" class="form-control" formControlName='skillName' > -->
+                        <select style="height: 50px;box-shadow: none;" name="skillName" id="skillName" formControlName='skillName' class="form-control form-select">
+                            <option value="null">Select Skill</option>
+                            <option value="JavaScript">JavaScript</option>
+                            <option value="Angular">Angular</option>
+                            <option value="Python">Python</option>
+                            <option value="Java">Java</option>
+                            <option value="c++">c++</option>
+
+                        </select>
+                        &nbsp;
+                        <select style="height: 50px;box-shadow: none;" name="skillLevel" id="skillLevel" formControlName='skillLevel' class="form-control form-select">
+                            <option value="null">Select Level</option>
+                            <option value="Beginner">Beginner</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Professional">Professional</option>
+                            <option value="Expert">Expert</option>
+
+                        </select>
+                        &nbsp;
+                        <button (click)='removeSkill(i)'  style="width: 200px;height: 45px;" class="form-control btn btn-outline-danger">Remove</button>
+                    
+                </div>
+
+            </div><br>
+              
+
+<!-- 
+                <div class="form-group" formGroupName='authData'>
+                    <input style="height: 50px;box-shadow: none;" type="text" class="form-control" placeholder="Username"  formControlName="username" >
+                </div> <br>
+                <div class="form-group">
+                    <input style="height: 50px;box-shadow: none;" type="text" class="form-control" placeholder="Password" type="password"  formControlName="password"  >
+                </div><br><br> -->
+                <div class="form-group mt-2" formGroupName='authData'>
+                    <div class="signup_button">
+                        <button style="height: 50px;font-size: 22px;color: #b0ccf7;border-radius: 10px;" class="btn  form-control submit_button">Sign Up</button>
+                    </div><br>
+
+                    <div class="login_button">
+                        <button style="height: 50px;font-size: 22px;color: #b0f7c8;border-radius: 10px;" class="btn  form-control submit_button">Login</button>
+                    </div><br>
+                    <!-- {{signUpForm.value | json}} -->
+                    <!-- <div class="register_button" style="display: flex;flex-direction: row-reverse;">
+                        <a routerLink='/auth/register' style="font-size: 16px;" class="text-primary">Register</a>
+                    </div><br> -->
+                </div>
+            </form>
+            
+        </div>
+        
+    </div>
+    </div>
+

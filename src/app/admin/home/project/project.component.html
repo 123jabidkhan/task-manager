@@ -1,0 +1,33 @@
+<mat-card    style="height: 300px;background-color: rgba(249, 248, 252, 0.808);margin: 5px;border-radius: 50px;" [ngClass]='{"green":project.active === true,"red":project.active != true}'>
+    <mat-card-header>
+    <mat-card-title style='color:rgb(6, 194, 131)'>{{project.projectName}}</mat-card-title>
+    <mat-card-subtitle>#{{project.projectID}}</mat-card-subtitle>
+</mat-card-header>
+    <mat-card-content>
+        <table class="table">
+
+        <tbody>
+            <tr>
+                <td class="boldTd">Date of start</td>
+                <td>{{project.dateOfStart}}</td>  
+            </tr>
+            <tr>
+                <td class="boldTd">Team Size</td>
+                <td>{{project.teamSize}}</td>  
+            </tr>
+            <tr>
+                <td class="boldTd">Client Location</td>
+                <td>{{project.clientLocationName}}</td>  
+            </tr>
+            <tr>
+                <td class="boldTd">Project Status</td>
+                <td>{{project.status}}</td>  
+            </tr>
+        </tbody>            
+    </table>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button color='primary'><a style="text-decoration:none" href="/update/{{project.id}}">Edit</a> </button>
+        <button mat-button color='warn' (click)='dellProject(project.id)'>Delete</button>
+    </mat-card-actions>
+</mat-card>
